@@ -1,4 +1,5 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const cors = require('cors');
 
 const dbConnect = require('./dbConnect');
@@ -46,5 +47,10 @@ app.get('/:url', async (req, res) => {
   // });
 });
 
-const port = 3000 || process.env.PORT;
-app.listen(port, () => console.log('Server running'));
+const port = process.env.PORT || 3000;
+mongoose
+  .connect(process.env.MONGODB_URL)
+  .then(() => {
+    app.listen(port, () => console.log('Server running'));
+  })
+  .catch((err) => console.log(err));
