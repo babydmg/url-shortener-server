@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const dbConnect = require('./dbConnect');
 const URLModel = require('./models/URL.model');
@@ -45,5 +46,5 @@ app.get('/:url', async (req, res) => {
   // });
 });
 
-const PORT = 3001 || process.env.PORT;
-app.listen(PORT, () => console.log('Server running'));
+const port = 3001 || process.env.PORT;
+app.listen(port, () => console.log('Server running'));
