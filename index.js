@@ -10,8 +10,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-dbConnect();
-
 app.get('/', (req, res) => {
   res.status(200).json({
     message: 'Hello',
